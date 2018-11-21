@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% for fp in fileproxylist%}
+<hr>
+<h4><a href={{ fp.file }}>{{ fp.file }}</a></h4>
+<ul>
+	{% for cube in fp.cube_list %}
+	<li>{{ cube.pattern }}
+		{% if 'count' in cube.attrs_dict %}
+		<pre>{{ cube.count }}</pre>
+		{% endif %}
+		{% if 'subcount' in cube.attrs_dict %}
+		<pre>{% for k,v in cube.subcount_dict.items() %}{{ v/cube.count*100 | round(0) }}% : {{ v }} --> {{ k }}<br>{% endfor %}</pre>
+		{% endif %}
+		{% if 'top' in cube.attrs_dict %}
+		<pre>{{ cube.txt_str }}</pre>
+		{% endif %}
+		{% endfor %}
+	</li>
+</ul>
+{% endfor %}
+{% endblock %}

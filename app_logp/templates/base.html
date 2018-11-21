@@ -1,0 +1,16 @@
+<!doctype html>
+<html>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='g.css') }}">
+  <head>
+    {% if title %}
+    <title>LogP-{{ title }}</title>
+    {% else %}
+    <title>logp</title>
+    {% endif %}
+  </head>
+  <body>
+    <div><a href="/index">Home</a></div>
+    <hr>
+    {% block content %}{% endblock %}
+  </body>
+</html>
